@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<h2>Lista de Pacientes</h2>
+
+<a href="/pacientes/nuevo"> Crear nuevo paciente</a>
+
+<br><br>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Especie</th>
+        <th>Dueño</th>
+        <th>Teléfono</th>
+        <th>Acciones</th>
+    </tr>
+
+    {% for p in pacientes %}
+    <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.nombre }}</td>
+        <td>{{ p.especie }}</td>
+        <td>{{ p.dueno }}</td>
+        <td>{{ p.telefono }}</td>
+        <td>
+            <a href="/pacientes/{{ p.id }}/editar">✏ Editar</a> |
+            <form action="/pacientes/{{ p.id }}/eliminar" method="POST" style="display:inline;">
+                <button type="submit" onclick="return confirm('¿Seguro que deseas eliminar?')">
+                    🗑 Eliminar
+                </button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

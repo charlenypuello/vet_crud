@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Clínica Veterinaria</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 30px;
+        }
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+        }
+        .mensaje {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/pacientes">Pacientes</a>
+        <a href="/logout">Cerrar sesión</a>
+    </nav>
+
+    <hr>
+
+    {% with mensajes = get_flashed_messages(with_categories=true) %}
+        {% if mensajes %}
+            {% for categoria, mensaje in mensajes %}
+                <p class="mensaje">{{ mensaje }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% block contenido %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<h2>{{ accion }} paciente</h2>
+
+<form method="POST">
+    <label>Nombre:</label><br>
+    <input type="text" name="nombre"
+           value="{{ paciente.nombre if paciente else '' }}"><br><br>
+
+    <label>Especie:</label><br>
+    <input type="text" name="especie"
+           value="{{ paciente.especie if paciente else '' }}"><br><br>
+
+    <label>Dueño:</label><br>
+    <input type="text" name="dueno"
+           value="{{ paciente.dueno if paciente else '' }}"><br><br>
+
+    <label>Teléfono:</label><br>
+    <input type="text" name="telefono"
+           value="{{ paciente.telefono if paciente else '' }}"><br><br>
+
+    <button type="submit">{{ accion }}</button>
+</form>
+
+{% endblock %}
